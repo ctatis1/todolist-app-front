@@ -1,0 +1,82 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-image: url('../public/background.png');
+}
+.home-container, .taskmanager-container {
+  text-align: center;
+}
+
+.appContainer {
+  margin-top: 8%;
+  width: 30%;
+  background-color: white;
+  border-radius: 2%;
+}
+h3 {
+  padding: 4%;
+}
+.link-style{
+  text-decoration: none;
+  color: white;
+}
+.p-home {
+  font-size: small;
+  color: gray;
+  text-align: center;
+}
+.p-taskList{
+  font-size: small;
+  color: gray;
+}
+
+.task-container{
+  padding-top: 10px;
+}
+.task-container:not(:last-child) {
+  border-bottom: solid thin lightblue;
+  padding-top: 10px;
+}
+.btn-start {
+  width: 25%;
+  border-radius: 2em;
+  border:none;
+  outline-offset: 10px;
+  margin-bottom: 4%;
+  color: white;
+  background-color: rgb(30, 30, 142);
+}
+
+.btn-addtask {
+  width: 27%;
+  border-radius: 2em;
+  border:none;
+  outline-offset: 10px;
+  margin-bottom: 4%;
+  color: white;
+  background-color: rgb(30, 30, 142);
+}
+.input-taskform {
+  width: 100%;
+  padding-left: 10px;
+  border: none;
+  margin-bottom: 1%;
+  border-radius: 0.5em;
+  background-color: rgb(197, 217, 235);
+  margin-bottom: 9px;
+}
+
+.input-taskform::placeholder {
+  color: rgb(30, 30, 142);
+}
+p{
+  word-wrap: break-word; 
+  word-break: break-word; 
+  white-space: normal; 
+  overflow-wrap: break-word; 
+}
+.p-notification{
+  color: green;
+}
