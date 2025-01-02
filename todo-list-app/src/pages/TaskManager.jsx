@@ -8,9 +8,13 @@ import taskService from '../services/tasks';
 const TasksManager = () => {
     const [formVisible, setFormVisible] = useState(false);
     const [tasks, setTasks] = useState([]);
+    const [notificationMsg, setNotificationMsg] = useState('');
 
     useEffect(() => {
-      if(formVisible === false)taskService.getAllTasks().then((initialTasks) => {setTasks(initialTasks.Tasks)});
+      setNotificationMsg('Cargando...');
+      if(formVisible === false)taskService.getAllTasks()
+        .then((initialTasks) => {setTasks(initialTasks.Tasks)})
+        .catch(err => setNotificationMsg('No hay tareas pendientes'));
     },[formVisible]);
 
     return(
@@ -22,7 +26,11 @@ const TasksManager = () => {
                     :
                     <>
                         <div style={{textAlign: 'center'}}><Button className="btn-addtask" onClick={() => setFormVisible(!formVisible)}>Add Task</Button></div>
-                        <TaskList tasks={tasks} setTasks={setTasks}/>
+                        {tasks.length > 0 ? 
+                            <TaskList tasks={tasks} setTasks={setTasks}/>
+                        :
+                            <div style={{textAlign: 'center', paddingTop: '20px'}}><p className="p-notification">{notificationMsg}</p></div>
+                        }
                     </>
                 }
             </div>

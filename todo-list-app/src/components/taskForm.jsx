@@ -6,9 +6,11 @@ const TaskForm = ({setFormVisible}) => {
     const [newTitle, setNewTitle] = useState('');
     const [newDesc, setNewDesc] = useState('');
     const [notificationMsg, setNotificationMsg] = useState('');
+    const [errFlag, setErrFlag] = useState(false);
 
     const addTask = async(e) => {
         e.preventDefault();
+        setNotificationMsg('Cargando...');
         const newTask = {
             title: newTitle,
             description: newDesc
@@ -21,8 +23,14 @@ const TaskForm = ({setFormVisible}) => {
                 setNotificationMsg('');
                 setFormVisible(false);
             }, 1500);
-            //setTasks(task.concat(newTask));
-        }).catch(err => setNotificationMsg(err.response.data.Status.StatusDesc));
+        }).catch(err => {
+            setErrFlag(true);
+            setNotificationMsg('No es posible crear tareas en este momento');
+            if(err.code === 'ERR_NETWORK') setTimeout(() => {
+                setNotificationMsg('');
+            }, 1500);
+            else setNotificationMsg(err.response.data.Status.StatusDesc);
+        });
     }
     
     const handleTitleChange = (e) => {
@@ -33,13 +41,13 @@ const TaskForm = ({setFormVisible}) => {
     }
     return(
         <>
-            <div style={{textAlign: 'center'}}><p className="p-notification">{notificationMsg}</p></div>
+            <div style={{textAlign: 'center'}}><p className={errFlag ? 'p-notification-err':'p-notification-succ'}>{notificationMsg}</p></div>
             <form onSubmit={addTask}>
                 <div>
-                    <input className="input-taskform" value={newTitle} placeholder="Title" onChange={handleTitleChange}/> 
+                    <input className="input-taskform" type="text" value={newTitle} placeholder="Title" onChange={handleTitleChange} required/> 
                 </div>
                 <div>
-                    <input className="input-taskform" style={{height: '80px'}} value={newDesc} placeholder="Description" onChange={handleDescChange}/>
+                    <input className="input-taskform" type="text" style={{height: '80px'}} value={newDesc} placeholder="Description" onChange={handleDescChange} required/>
                 </div>
                 <br />
                 <div style={{textAlign: 'center'}}>

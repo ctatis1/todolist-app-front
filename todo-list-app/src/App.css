@@ -64,7 +64,7 @@ h3 {
   border: none;
   margin-bottom: 1%;
   border-radius: 0.5em;
-  background-color: rgb(197, 217, 235);
+  background-color: #C9E2FF;
   margin-bottom: 9px;
 }
 
@@ -77,6 +77,9 @@ p{
   white-space: normal; 
   overflow-wrap: break-word; 
 }
-.p-notification{
+.p-notification-succ{
   color: green;
+}
+.p-notification-err{
+  color: red;
 }
