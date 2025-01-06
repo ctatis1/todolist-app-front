@@ -4,6 +4,9 @@
 
 body {
   background-image: url('../public/background.png');
+  background-size: cover;
+  height: 100%;
+  
 }
 .home-container, .taskmanager-container {
   text-align: center;
