@@ -20,7 +20,7 @@ const TasksManager = () => {
     return(
         <div className="container-sm">
             <div>
-                <h3 style={{textAlign: "center", color: 'rgb(30, 30, 142)'}}>Tasks</h3>
+                <h3 data-testid="task-title" style={{textAlign: "center", color: 'rgb(30, 30, 142)'}}>Tasks</h3>
                 {formVisible ? 
                     <TaskForm setFormVisible={setFormVisible}/>
                     :
