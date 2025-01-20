@@ -42,7 +42,7 @@ const TaskForm = ({setFormVisible}) => {
     return(
         <>
             <div style={{textAlign: 'center'}}><p className={errFlag ? 'p-notification-err':'p-notification-succ'}>{notificationMsg}</p></div>
-            <form onSubmit={addTask}>
+            <form onSubmit={addTask} data-testid="task-form">
                 <div>
                     <input className="input-taskform" type="text" value={newTitle} placeholder="Title" onChange={handleTitleChange} required/> 
                 </div>

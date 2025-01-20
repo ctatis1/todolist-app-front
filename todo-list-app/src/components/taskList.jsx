@@ -35,6 +35,8 @@ const TaskList = ({tasks, setTasks}) => {
                                     style={{
                                         transform: "scale(1.2)"
                                     }}
+                                    data-testid={`task-${task.id}`}
+                                    id={`task-${task.id}`}
                                     onClick={() => handleDeleteTask(task.id)}
                                 />
                             </Form>
